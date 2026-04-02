@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  eureka:
+    build: .
+    container_name: eureka-server
+    ports:
+      - "9009:9009"
+    environment:
+      # Переопределяем localhost на имя сервиса для внутренней работы
+      - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://eureka:9009/eureka
+      # Если нужно, чтобы Eureka была доступна по IP хоста
+      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=true
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
