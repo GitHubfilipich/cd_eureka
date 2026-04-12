@@ -16,3 +16,4 @@ services:
 networks:
   microservices-net:
     driver: bridge
+    name: microservices-net  # <--- Жестко задаем глобальное имя
